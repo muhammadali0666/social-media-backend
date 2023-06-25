@@ -1,14 +1,8 @@
-const pg = require('pg');
+var pg = require("pg");
 
-const { Pool } = pg
-
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'exam_fourth_db',
-  password: 'muhammadali5025',
-  port: 5432,
-})
+var conString = "postgres://uhbtnbpv:poBqP9AmMO1XGVCqihyIpXXQ_MpL-WrZ@arjuna.db.elephantsql.com/uhbtnbpv";
+var client = new pg.Client(conString);
+client.connect();
 
 
-module.exports = pool
+module.exports = client
