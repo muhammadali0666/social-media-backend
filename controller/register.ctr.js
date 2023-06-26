@@ -47,8 +47,6 @@ const loginAuth = async (req, res) => {
       [email]
     );
 
-    
-
     if (!foundedUser.rows.length) {
       return res.send("You are not registered");
     }
@@ -85,9 +83,9 @@ const loginAuth = async (req, res) => {
         msg: "Password wrong",
       });
     }
-  } catch {
+  } catch(error) {
     res.send({
-      msg: "error",
+      msg: error.message,
     });
   }
 };

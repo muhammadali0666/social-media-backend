@@ -50,8 +50,10 @@ const getOnline = async (req, res) => {
   try {
     let img_list = await pool.query(`select * from register`);
     res.send(img_list.rows);
-  } catch {
-    res.send("error");
+  } catch(error) {
+    res.send({
+      msg: error.message
+    });
   }
 };
 
