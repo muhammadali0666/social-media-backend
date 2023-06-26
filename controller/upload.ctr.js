@@ -19,7 +19,6 @@ const uploadReq = async (req, res) => {
 
     res.json(`file uploaded`);
   } catch (error) {
-    console.log(error),
       res.send({
         msg: error,
       });
@@ -41,15 +40,14 @@ const uploadMini = async (req, res) => {
     file = file ? file : getOne.rows[0].file;
 
     await pool.query(
-      `update register set user_img_mini = $1 where id = $2`,
+      `update register set user_img = $1 where id = $2`,
       [file, foundedId]
     );
 
     res.json(`file uploaded`);
   } catch (error) {
-    console.log(error),
       res.send({
-        msg: error,
+        msg: error.message,
       });
   }
 };
@@ -78,7 +76,7 @@ const uploadCover = async (req, res) => {
   } catch (error) {
     console.log(error),
       res.send({
-        msg: error,
+        msg: error.message,
       });
   }
 };
